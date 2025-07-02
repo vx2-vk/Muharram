@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Muharram Greetings</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0c0c2c, #1f1f46);
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    img {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      margin-top: 20px;
+    }
+
+    .message {
+      font-size: 1.3rem;
+      margin: 20px 0;
+      background: linear-gradient(to right, #ff00cc, #3333ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    input {
+      padding: 12px 15px;
+      border: none;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      margin-bottom: 15px;
+      width: 90%;
+      max-width: 300px;
+      outline: none;
+    }
+
+    .btn {
+      margin-top: 10px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px #00ffe0;
+    }
+
+    .btn:hover {
+      background: rgba(0, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+
+    .output {
+      margin: 20px 0;
+      font-size: 1.2rem;
+      color: #00ffe0;
+      text-shadow: 0 0 8px #00ffe0;
+    }
+
+    .whatsapp {
+      margin-top: 10px;
+      background: #25D366;
+      box-shadow: 0 0 10px #25D366;
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .whatsapp:hover {
+      background: #1ebe5c;
+    }
+
+    .whatsapp img {
+      width: 20px;
+      height: 20px;
+      margin: 0;
+    }
+
+    .audio-controls {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      padding: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #fff;
+      z-index: 100;
+    }
+
+    .audio-controls img {
+      width: 25px;
+      height: 25px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="Muharram.gif" alt="Muharram GIF" />
+    <div class="message">
+      ✨ Muharram! May this Muharram bring joy, peace, and prosperity to all!
+    </div>
+
+    <input type="text" id="nameInput" placeholder="Enter your name" />
+    <br />
+    <button class="btn" onclick="generateWish()">Generate Muharram Wish</button>
+    
+    <div id="output" class="output"></div>
+    
+    <a id="whatsappShare" class="btn whatsapp" style="display:none" target="_blank">
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" alt="WhatsApp Icon" />
+      Share on WhatsApp
+    </a>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" autoplay loop>
+    <source src="Muharram.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="audio-controls" onclick="toggleMute()">
+    <img id="muteIcon" src="https://img.icons8.com/ios-filled/50/ffffff/speaker.png" alt="Mute/Unmute" />
+  </div>
+
+  <script>
+    function generateWish() {
+      const name = document.getElementById("nameInput").value.trim();
+      const output = document.getElementById("output");
+      const whatsappBtn = document.getElementById("whatsappShare");
+
+      if (name) {
+        const message = `Muharram from ${name}! Wishing you happiness and blessings!`;
+        output.innerText = message;
+
+        const shareURL = `https://wa.me/?text=${encodeURIComponent(message + " " + window.location.href)}`;
+        whatsappBtn.href = shareURL;
+        whatsappBtn.style.display = "inline-flex";
+      } else {
+        output.innerText = "Please enter your name!";
+        whatsappBtn.style.display = "none";
+      }
+    }
+
+    function toggleMute() {
+      const audio = document.getElementById("bgMusic");
+      const icon = document.getElementById("muteIcon");
+
+      audio.muted = !audio.muted;
+      icon.src = audio.muted
+        ? "https://img.icons8.com/ios-filled/50/ffffff/mute.png"
+        : "https://img.icons8.com/ios-filled/50/ffffff/speaker.png";
+    }
+  </script>
+</body>
+</html>
