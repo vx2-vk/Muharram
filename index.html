@@ -284,7 +284,7 @@
       
       if (from) {
         document.getElementById("greeting").innerHTML = 
-          `🎉 <span style="color:${getRandomColor()}">${decodeURIComponent(from)}</span> తరఫున మీకు శుభదీపావళి శుభాకాంక్షలు! ✨`;
+          `🎉 <span style="color:${getRandomColor()}">${decodeURIComponent(from)}</span> తరఫున మీకు మొహర్రం శుభాకాంక్షలు! ✨`;
         startFireworks();
       }
       
@@ -315,7 +315,7 @@
     }
 
     function shareLink() {
-      const text = `🎇 మీకు మొహర్రం శుభాకాంక్షలు! 🪔\n\n${decodeURIComponent(window.generatedLink.split('from=')[1])} తరఫున మీకు శుభాకాంక్షలు!\n\n${window.generatedLink}`;
+      const text = `🎇 మీకు మొహర్రం శుభాకాంక్షలు! 🪔\n\n${decodeURIComponent(window.generatedLink.split('from=')[1])} తరఫున మీకు మొహర్రం శుభాకాంక్షలు!\n\n${window.generatedLink}`;
       window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank");
     }
 
