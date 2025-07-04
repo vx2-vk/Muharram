@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <title>శుభదీపావళి శుభాకాంక్షలు</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#2ecc71">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --gold: #A1FFCE;
+      --orange: #2ecc71;
+      --red: #27ae60;
+      --yellow: #A1FFCE;
+      --dark: #145A32;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      touch-action: manipulation; /* Improve touch responsiveness */
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Noto Sans Telugu', sans-serif;
+      background: #000;
+      text-align: center;
+      overflow-x: hidden;
+      min-height: 100vh;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 0 20px var(--orange);
+      position: relative;
+      overflow: hidden;
+      margin: 15px 0;
+      z-index: 10;
+      border: 2px solid var(--gold);
+    }
+    
+    .laxmi {
+      width: 100%;
+      max-width: 180px;
+      height: auto;
+      margin: 10px auto;
+      border-radius: 12px;
+      box-shadow: 0 0 15px var(--yellow);
+      display: block;
+    }
+    
+    .greeting {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin: 15px 0;
+      line-height: 1.4;
+      text-shadow: 0 0 8px var(--orange);
+      word-wrap: break-word;
+    }
+    
+    .name-box {
+      margin: 15px 0;
+      width: 100%;
+    }
+    
+    input[type="text"] {
+      padding: 12px 15px;
+      font-size: 1rem;
+      width: 100%;
+      border-radius: 12px;
+      border: 2px solid var(--gold);
+      outline: none;
+      font-family: inherit;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      text-align: center;
+      -webkit-appearance: none; /* Remove iOS shadow */
+    }
+    
+    input[type="text"]::placeholder {
+      color: #ccc;
+      opacity: 1;
+    }
+    
+    .btn {
+      margin-top: 12px;
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      background: linear-gradient(to right, var(--orange), var(--red));
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--orange);
+      width: 100%;
+      position: relative;
+      transition: transform 0.2s;
+    }
+    
+    .btn:active {
+      transform: scale(0.98);
+    }
+    
+    #share-btn {
+      display: none;
+      margin-top: 15px;
+      width: 100%;
+      animation: fadeIn 0.3s ease-out;
+    }
+    
+    .whatsapp-btn {
+      background-color: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    /* Firecracker Effects (Mobile Optimized) */
+    .firecracker {
+      position: fixed;
+      bottom: -20px;
+      width: 6px;
+      height: 15px;
+      background: linear-gradient(to top, #777, #fff);
+      border-radius: 50% 50% 0 0;
+      z-index: 5;
+      animation: launch 2.5s ease-in forwards;
+    }
+    
+    .firecracker::before {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 6px;
+      background: linear-gradient(to right, var(--orange), var(--yellow), var(--orange));
+      border-radius: 0 0 50% 50%;
+      filter: blur(1px);
+    }
+    
+    .explosion {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      z-index: 6;
+      animation: explode 0.8s ease-out forwards;
+    }
+    
+    .spark {
+      position: fixed;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      z-index: 7;
+      animation: sparkle 0.8s ease-out forwards;
+    }
+    
+    @keyframes launch {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-100vh) rotate(0deg); opacity: 0; }
+    }
+    
+    @keyframes explode {
+      0% { transform: scale(0.5); opacity: 1; }
+      100% { transform: scale(15); opacity: 0; }
+    }
+    
+    @keyframes sparkle {
+      0% { transform: translate(0,0); opacity: 1; }
+      100% { transform: translate(var(--tx), var(--ty)); opacity: 0; }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    /* Performance optimizations */
+    .firecracker, .explosion, .spark {
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDA1eXl0MmxydDJlZmFjZGYxOGF4aXAxY2U3OGJieG1kMHBjbzMwbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ErwOniUoUCjUCteUln/giphy.gif" alt="లక్ష్మీ దేవి" class="laxmi floating">
+
+    <div class="greeting" id="greeting">మీకు శుభదీపావళి శుభాకాంక్షలు!</div>
+
+    <div class="name-box">
+      <input type="text" id="nameInput" placeholder="మీ పేరు టైప్ చేయండి" autocapitalize="words">
+      <button class="btn" onclick="generateLink()">
+        <span class="btn-text">🎁 లింక్ తయారు చేసి షేర్ చేయండి</span>
+      </button>
+    </div>
+
+    <div id="share-btn">
+      <button class="btn whatsapp-btn" onclick="shareLink()">
+        <i class="fab fa-whatsapp"></i> WhatsApp లో షేర్ చేయండి
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if coming from shared link
+      const urlParams = new URLSearchParams(window.location.search);
+      const from = urlParams.get("from");
+      
+      if (from) {
+        document.getElementById("greeting").innerHTML = 
+          `🎉 <span style="color:${getRandomColor()}">${decodeURIComponent(from)}</span> తరఫున మీకు శుభదీపావళి శుభాకాంక్షలు! ✨`;
+        startFireworks();
+      }
+      
+      // Add touch feedback for buttons
+      const buttons = document.querySelectorAll('.btn');
+      buttons.forEach(btn => {
+        btn.addEventListener('touchstart', () => {
+          btn.style.transform = 'scale(0.98)';
+        });
+        btn.addEventListener('touchend', () => {
+          btn.style.transform = '';
+        });
+      });
+    });
+
+    function generateLink() {
+      const name = document.getElementById("nameInput").value.trim();
+      if (!name) {
+        alert("దయచేసి మీ పేరు టైప్ చేయండి.");
+        return;
+      }
+
+      const link = `${window.location.href.split('?')[0]}?from=${encodeURIComponent(name)}`;
+      window.generatedLink = link;
+      
+      document.getElementById("share-btn").style.display = "block";
+      startFireworks();
+    }
+
+    function shareLink() {
+      const text = `🎇 మీకు శుభదీపావళి శుభాకాంక్షలు! 🪔\n\n${decodeURIComponent(window.generatedLink.split('from=')[1])} తరఫున మీకు శుభాకాంక్షలు!\n\n${window.generatedLink}`;
+      window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank");
+    }
+
+    function startFireworks() {
+      // Launch initial burst
+      for (let i = 0; i < 8; i++) {
+        setTimeout(launchFirework, i * 300);
+      }
+      
+      // Continue with fewer fireworks to save battery
+      const interval = setInterval(() => {
+        if (document.visibilityState === 'visible') {
+          launchFirework();
+        }
+      }, 1500);
+      
+      // Cleanup when page is hidden
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') {
+          clearInterval(interval);
+        }
+      });
+    }
+
+    function launchFirework() {
+      const leftPos = Math.random() * window.innerWidth;
+      
+      // Create firework
+      const fc = document.createElement('div');
+      fc.className = 'firecracker';
+      fc.style.left = `${leftPos}px`;
+      document.body.appendChild(fc);
+      
+      // Explode at random height (higher on mobile)
+      setTimeout(() => {
+        createExplosion(leftPos, 50 + Math.random() * window.innerHeight * 0.3);
+        fc.remove();
+      }, 2000);
+    }
+    
+    function createExplosion(x, y) {
+      const color = getRandomColor();
+      
+      // Main explosion
+      const explosion = document.createElement('div');
+      explosion.className = 'explosion';
+      explosion.style.left = `${x}px`;
+      explosion.style.top = `${y}px`;
+      explosion.style.background = `radial-gradient(circle, #fff, ${color}, ${darkenColor(color)})`;
+      document.body.appendChild(explosion);
+      
+      // Create sparks (fewer on mobile for performance)
+      for (let i = 0; i < 40; i++) {
+        const spark = document.createElement('div');
+        spark.className = 'spark';
+        spark.style.left = `${x}px`;
+        spark.style.top = `${y}px`;
+        spark.style.setProperty('--tx', `${Math.random() * 200 - 100}px`);
+        spark.style.setProperty('--ty', `${Math.random() * 200 - 100}px`);
+        spark.style.backgroundColor = getRandomColor();
+        document.body.appendChild(spark);
+        
+        setTimeout(() => spark.remove(), 800);
+      }
+      
+      setTimeout(() => explosion.remove(), 800);
+    }
+    
+    function getRandomColor() {
+      const colors = ['#A1FFCE', '#2ecc71', '#27ae60', '#145A32'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+    
+    function darkenColor(color) {
+      // Simple color darkening for gradient
+      return color.replace(/FF/, 'CC').replace(/D7/, 'A0');
+    }
+  </script>
+</body>
+</html>
